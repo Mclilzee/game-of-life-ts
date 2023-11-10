@@ -11,7 +11,7 @@ class GameOfLife {
   }
 
   generateCells(cells: Cell[]): Cell[] {
-    const counter = countBy((cell: Cell) => cell.x + cell.y);
+    const counter = countBy((cell: Cell) => cell.x.toString() + cell.y.toString());
     console.log(counter(cells));
     return cells.flatMap(cell => this.getNeighboringCells(cell))
   }
@@ -23,3 +23,5 @@ class GameOfLife {
         .map(y => Cell.of(x, y)));
   }
 }
+
+export default GameOfLife;
