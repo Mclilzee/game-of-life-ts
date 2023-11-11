@@ -1,17 +1,17 @@
 import { countBy } from "ramda";
 
-enum Cell {
+export enum Cell {
   DEAD,
   ALIVE
 }
 
 type Cord = [number, number];
 
-function generateCells(cells: Cell[]): Cell[] {
+function generateCells(cells: Cell[][]): Cell[][] {
   return [];
 }
 
-function generateLiveCells(cells: Cell[]) {
+function generateLiveCells(cells: Cell[][]) {
   return [];
 }
 
