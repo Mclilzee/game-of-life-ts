@@ -1,14 +1,15 @@
-import updateCells from "../cellGenerator";
+import updateCells from "../updateCells";
 import Cell from "../Cell";
 import { expect, describe, test } from "bun:test";
 
-describe("Generate a map of live cells", () => {
+describe("Update an empty cells doesn othing", () => {
   test("If empty list provided, it returns empty", () => {
     const cells: Cell[] = [];
-    expect(updateCells(cells)).toEqual([]);
+    updateCells(cells);
+    expect(cells).toEqual([]);
   });
 
-  test("Return correct block", () => {
+  test("Update block cells", () => {
     const cells = [
       Cell.of(0, 0, false),
       Cell.of(0, 1, false),
@@ -28,10 +29,30 @@ describe("Generate a map of live cells", () => {
       Cell.of(3, 3, false),
     ]
 
-    expect(updateCells(cells)).toEqual(cells);
+    const expectedCells = [
+      Cell.of(0, 0, false),
+      Cell.of(0, 1, false),
+      Cell.of(0, 2, false),
+      Cell.of(0, 3, false),
+      Cell.of(1, 0, false),
+      Cell.of(1, 1, true),
+      Cell.of(1, 2, true),
+      Cell.of(1, 3, false),
+      Cell.of(2, 0, false),
+      Cell.of(2, 1, true),
+      Cell.of(2, 2, true),
+      Cell.of(2, 3, false),
+      Cell.of(3, 0, false),
+      Cell.of(3, 1, false),
+      Cell.of(3, 2, false),
+      Cell.of(3, 3, false),
+    ]
+
+    updateCells(cells);
+    expect(cells).toEqual(expectedCells);
   });
 
-  test("Return blinker cells", () => {
+  test("Update blinker cells", () => {
     const cells = [
       Cell.of(0, 0, false),
       Cell.of(0, 1, true),
@@ -57,6 +78,6 @@ describe("Generate a map of live cells", () => {
     ]
 
     updateCells(cells);
-    expect(updateCells(cells)).toEqual(expectedCells);
+    expect(cells).toEqual(expectedCells);
   });
 });
