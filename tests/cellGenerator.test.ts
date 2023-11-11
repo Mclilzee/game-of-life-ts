@@ -18,4 +18,32 @@ describe("Generate a map of live cells", () => {
 
     expect(generateCells(cells)).toEqual(cells);
   });
+
+  test("Return blinker cells", () => {
+    const cells = [
+      Cell.of(0, 0, false),
+      Cell.of(0, 1, true),
+      Cell.of(0, 2, false),
+      Cell.of(1, 0, false),
+      Cell.of(1, 1, true),
+      Cell.of(1, 2, false),
+      Cell.of(2, 0, false),
+      Cell.of(2, 1, true),
+      Cell.of(2, 2, false),
+    ]
+
+    const expectedCells = [
+      Cell.of(0, 0, false),
+      Cell.of(0, 1, false),
+      Cell.of(0, 2, false),
+      Cell.of(1, 0, true),
+      Cell.of(1, 1, true),
+      Cell.of(1, 2, true),
+      Cell.of(2, 0, false),
+      Cell.of(2, 1, false),
+      Cell.of(2, 2, false),
+    ]
+
+    expect(generateCells(cells)).toEqual(expectedCells);
+  });
 });
