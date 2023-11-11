@@ -97,12 +97,6 @@ button:focus-visible {
   }
 }
 
-.canvas {
-  display: grid;
-  grid-template-columns: repeat(100, 1fr);
-  grid-template-rows: repeat(100, 1fr);
-}
-
 .cell {
   background-color: white;
   width: min(8px, 0.8vw);
