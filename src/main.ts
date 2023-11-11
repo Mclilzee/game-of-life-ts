@@ -1,7 +1,7 @@
 import "./style.css";
 import { range } from "ramda";
 import Cell from "./Cell";
-import generateCells from "./cellGenerator";
+import updateCells from "./updateCells";
 const rowSize = 100;
 const columnSize = 100;
 
@@ -22,9 +22,8 @@ let cellElements = cells.map(cell => {
 const canvas = document.querySelector(".canvas") as HTMLDivElement;
 cellElements.forEach(node => canvas.appendChild(node))
 
-
-function displayChange(cells: Cell[], cellElements: HTMLDivElement[]) {
-  const newCells = generateCells(cells);
+function displayChange() {
+  updateCells(cells);
   cells.forEach((cell, x) => {
     if (cell.alive) {
       cellElements[x].classList.add("alive")
@@ -35,9 +34,9 @@ function displayChange(cells: Cell[], cellElements: HTMLDivElement[]) {
 
   setTimeout(() => {
     if (cells.find(cell => cell.alive)) {
-      displayChange(newCells, cellElements);
+      displayChange();
     }
   }, 200);
 }
 
-displayChange(cells, cellElements);
+displayChange();

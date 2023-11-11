@@ -1,24 +1,20 @@
 import { countBy } from "ramda";
 import Cell from "./Cell";
 
-function updateCells(cells: Cell[]): Cell[] {
+function updateCells(cells: Cell[]): void {
   const liveCells = cells.filter(cell => cell.alive);
-  const touchingList = generateNeighboringMap(liveCells);
-  const newCells = cells.map(cell => {
-    const neighbors = touchingList[cell.toString()]
+  const neighborsMap = generateNeighboringMap(liveCells);
+  cells.forEach(cell => {
+    const neighbors = neighborsMap[cell.toString()]
 
     if (neighbors === 3) {
-      return Cell.of(cell.x, cell.y, true);
+      cell.alive = true;
+    } else if (neighbors === 2 && cell.alive) {
+      cell.alive = true;
+    } else {
+      cell.alive = false;
     }
-
-    if (neighbors === 2 && cell.alive) {
-      return Cell.of(cell.x, cell.y, true);
-    }
-
-    return Cell.of(cell.x, cell.y, false);
   });
-
-  return newCells;
 }
 
 function generateNeighboringMap(cells: Cell[]) {
