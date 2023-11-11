@@ -36,7 +36,7 @@ function displayChange() {
     if (cells.find(cell => cell.alive)) {
       displayChange();
     }
-  }, 200);
+  }, 100);
 }
 
 displayChange();
