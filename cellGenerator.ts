@@ -18,7 +18,7 @@ function generateCells(cells: Cell[]): Cell[] {
       return Cell.of(cell.x, cell.y, false);
     }
 
-    return Cell.of(cell.x, cell.y, false);
+    return Cell.of(cell.x, cell.y, true);
   });
 }
 
