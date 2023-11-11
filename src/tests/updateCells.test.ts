@@ -1,11 +1,11 @@
-import generateCells from "../cellGenerator";
+import updateCells from "../cellGenerator";
 import Cell from "../Cell";
 import { expect, describe, test } from "bun:test";
 
 describe("Generate a map of live cells", () => {
   test("If empty list provided, it returns empty", () => {
     const cells: Cell[] = [];
-    expect(generateCells(cells)).toEqual([]);
+    expect(updateCells(cells)).toEqual([]);
   });
 
   test("Return correct block", () => {
@@ -28,7 +28,7 @@ describe("Generate a map of live cells", () => {
       Cell.of(3, 3, false),
     ]
 
-    expect(generateCells(cells)).toEqual(cells);
+    expect(updateCells(cells)).toEqual(cells);
   });
 
   test("Return blinker cells", () => {
@@ -56,6 +56,7 @@ describe("Generate a map of live cells", () => {
       Cell.of(2, 2, false),
     ]
 
-    expect(generateCells(cells)).toEqual(expectedCells);
+    updateCells(cells);
+    expect(updateCells(cells)).toEqual(expectedCells);
   });
 });

@@ -1,7 +1,7 @@
 import { countBy } from "ramda";
 import Cell from "./Cell";
 
-function generateCells(cells: Cell[]): Cell[] {
+function updateCells(cells: Cell[]): Cell[] {
   const liveCells = cells.filter(cell => cell.alive);
   const touchingList = generateNeighboringMap(liveCells);
   const newCells = cells.map(cell => {
@@ -33,4 +33,4 @@ function getNeighbors(cell: Cell) {
       .map(y => [x, y]));
 }
 
-export default generateCells;
+export default updateCells;
