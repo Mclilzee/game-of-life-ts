@@ -17,4 +17,3 @@ let cellElements = cells.map(cell => {
 
 const canvas = document.querySelector(".canvas") as HTMLDivElement;
 cellElements.forEach(node => canvas.appendChild(node))
-
