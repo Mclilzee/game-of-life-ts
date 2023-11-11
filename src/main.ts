@@ -6,7 +6,6 @@ const columnSize = 100;
 const generateCell = (x: number, y: number) => Cell.of(x, y, Math.random() > 0.3 ? true : false);
 
 let cells = range(0, rowSize).flatMap(x => range(0, columnSize).map(y => generateCell(x, y)));
-console.log(cells);
 
 let cellElements = cells.map(cell => {
   const element = document.createElement("div");
