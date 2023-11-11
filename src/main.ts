@@ -7,7 +7,7 @@ const columnSize = 100;
 
 const generateCell = (x: number, y: number) => Cell.of(x, y, Math.random() < 0.2 ? true : false);
 
-let cells = range(0, rowSize).flatMap(x => range(0, columnSize).map(y => generateCell(x, y)));
+const cells = range(0, rowSize).flatMap(x => range(0, columnSize).map(y => generateCell(x, y)));
 
 let cellElements = cells.map(cell => {
   const element = document.createElement("div");
@@ -24,7 +24,7 @@ cellElements.forEach(node => canvas.appendChild(node))
 
 
 function displayChange(cells: Cell[], cellElements: HTMLDivElement[]) {
-  cells = generateCells(cells);
+  const newCells = generateCells(cells);
   cells.forEach((cell, x) => {
     if (cell.alive) {
       cellElements[x].classList.add("alive")
@@ -34,11 +34,10 @@ function displayChange(cells: Cell[], cellElements: HTMLDivElement[]) {
   })
 
   setTimeout(() => {
-    displayChange(cells, cellElements)
     if (cells.find(cell => cell.alive)) {
-      displayChange(cells, cellElements);
+      displayChange(newCells, cellElements);
     }
-  }, 1000);
+  }, 200);
 }
 
 displayChange(cells, cellElements);
