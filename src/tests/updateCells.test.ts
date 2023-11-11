@@ -80,4 +80,35 @@ describe("Update an empty cells doesn othing", () => {
     updateCells(cells);
     expect(cells).toEqual(expectedCells);
   });
+
+  test("Two vertically adjacent cells doesn't stay alive", () => {
+    const cells = [
+      Cell.of(0, 0, true),
+      Cell.of(0, 1, true)
+    ]
+
+    const expectedCells = [
+      Cell.of(0, 0, false),
+      Cell.of(0, 1, false)
+    ]
+
+    updateCells(cells);
+    expect(cells).toEqual(expectedCells);
+  });
+
+  test("Two horizontaly adjacent cells doesn't stay alive", () => {
+    const cells = [
+      Cell.of(0, 0, true),
+      Cell.of(1, 0, true)
+    ]
+
+    const expectedCells = [
+      Cell.of(0, 0, false),
+      Cell.of(1, 0, false)
+    ]
+
+    updateCells(cells);
+    expect(cells).toEqual(expectedCells);
+  });
+
 });

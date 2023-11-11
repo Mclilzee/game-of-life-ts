@@ -105,8 +105,8 @@ button:focus-visible {
 
 .cell {
   background-color: white;
-  width: 8px;
-  height: 8px;
+  width: min(8px, 0.8vw);
+  height: min(8px, 0.8vh);
 }
 
 .cell.alive {
