@@ -1,29 +1,37 @@
 import { countBy } from "ramda";
+import Cell from "./Cell";
 
-export enum Cell {
-  DEAD,
-  ALIVE
+function generateCells(cells: Cell[]): Cell[] {
+  const liveCells = cells.filter(cell => cell.alive);
+  const touchingList = generateNeighboringMap(liveCells);
+  return cells.map(cell => {
+    const neighbors = touchingList[`${cell.toString}`];
+    if (neighbors === 3) {
+      return Cell.of(cell.x, cell.y, true);
+    }
+
+    if (neighbors < 2) {
+      return Cell.of(cell.x, cell.y, false);
+    }
+
+    if (neighbors > 3) {
+      return Cell.of(cell.x, cell.y, false);
+    }
+
+    return Cell.of(cell.x, cell.y, false);
+  });
 }
 
-type Cord = [number, number];
+function generateNeighboringMap(cells: Cell[]) {
+  const counter = countBy((cords: number[]) => cords[0].toString() + cords[1].toString());
 
-function generateCells(cells: Cell[][]): Cell[][] {
-  return [];
+  return counter(cells.flatMap(cell => getNeighbors(cell)));
 }
-
-function generateLiveCells(cells: Cell[][]) {
-  return [];
-}
-
-function generateNeighboringMap(cords: Cord[]) {
-  const counter = countBy((cord: Cord) => cord[0].toString() + cord[1].toString());
-  return counter(cords.flatMap(cord => getNeighbors(cord)));
-}
-function getNeighbors(cell: Cord) {
-  return [cell[0] - 1, cell[0], cell[0] + 1].flatMap(x =>
-    [cell[1] - 1, cell[1], cell[1] + 1]
-      .filter(y => !(cell[0] == x && cell[1] == y))
-      .map(y => [x, y] as Cord));
+function getNeighbors(cell: Cell) {
+  return [cell.x - 1, cell.x, cell.x + 1].flatMap(x =>
+    [cell.y - 1, cell.y, cell.y + 1]
+      .filter(y => !(cell.x == x && cell.y == y))
+      .map(y => [x, y]));
 }
 
 export default generateCells;

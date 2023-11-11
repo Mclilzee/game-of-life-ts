@@ -1,4 +1,4 @@
-class Cell {
+export default class Cell {
   readonly x: number;
   readonly y: number;
   readonly alive: boolean;
@@ -9,7 +9,11 @@ class Cell {
     this.alive = alive;
   }
 
-  of(x: number, y: number, alive: boolean) {
+  static of(x: number, y: number, alive: boolean) {
     return new Cell(x, y, alive);
+  }
+
+  toString() {
+    return this.x.toString() + this.y.toString();
   }
 }
