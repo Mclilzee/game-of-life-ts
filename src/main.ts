@@ -1,3 +1,4 @@
+import "./style.css";
 import { range } from "ramda";
 import Cell from "./Cell";
 const rowSize = 100;

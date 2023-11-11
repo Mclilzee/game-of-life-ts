@@ -26,6 +26,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  justify-content: center;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -94,4 +95,20 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.canvas {
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+}
+
+.cell {
+  background-color: white;
+  width: 8px;
+  height: 8px;
+}
+
+.cell.alive {
+  background-color: black;
 }
