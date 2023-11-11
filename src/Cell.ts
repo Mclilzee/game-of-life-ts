@@ -1,7 +1,7 @@
 export default class Cell {
   readonly x: number;
   readonly y: number;
-  readonly alive: boolean;
+  alive: boolean;
 
   private constructor(x: number, y: number, alive: boolean) {
     this.x = x;
