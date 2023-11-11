@@ -56,6 +56,6 @@ describe("Generate a map of live cells", () => {
       Cell.of(2, 2, false),
     ]
 
-    // expect(generateCells(cells)).toEqual(expectedCells);
+    expect(generateCells(cells)).toEqual(expectedCells);
   });
 });
