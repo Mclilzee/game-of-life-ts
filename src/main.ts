@@ -4,7 +4,7 @@ import Cell from "./Cell";
 import updateCells from "./updateCells";
 
 const rowSize = 100;
-const columnSize = 100;
+const columnSize = rowSize;
 
 const generateCell = (x: number, y: number) => Cell.of(x, y, Math.random() >= 0.5 ? true : false);
 
@@ -20,10 +20,6 @@ let cellElements = cells.map(cell => {
 });
 
 const canvas = document.querySelector("canvas") as HTMLCanvasElement;
-canvas.style.display = "grid";
-canvas.style.gridTemplateRows = `repeat(${rowSize}, 1fr)`;
-canvas.style.gridTemplateColumns = `repeat(${columnSize}, 1fr)`;
-cellElements.forEach(node => canvas.appendChild(node))
 
 function render() {
   updateCells(cells);

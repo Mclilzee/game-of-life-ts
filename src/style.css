@@ -97,12 +97,7 @@ button:focus-visible {
   }
 }
 
-.cell {
-  background-color: white;
-  width: min(8px, 0.8vw);
-  height: min(8px, 0.8vh);
-}
-
-.cell.alive {
-  background-color: black;
+canvas {
+  width: 800px;
+  aspect-ratio: 1;
 }
