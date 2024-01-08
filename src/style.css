@@ -96,8 +96,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
-canvas {
-  width: 800px;
-  aspect-ratio: 1;
-}
