@@ -25,7 +25,7 @@ canvas.style.gridTemplateRows = `repeat(${rowSize}, 1fr)`;
 canvas.style.gridTemplateColumns = `repeat(${columnSize}, 1fr)`;
 cellElements.forEach(node => canvas.appendChild(node))
 
-function displayChange() {
+function render() {
   updateCells(cells);
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].alive) {
@@ -37,9 +37,9 @@ function displayChange() {
 
   setTimeout(() => {
     if (cells.find(cell => cell.alive)) {
-      displayChange();
+      render();
     }
   }, 80);
 }
 
-displayChange();
+render();
