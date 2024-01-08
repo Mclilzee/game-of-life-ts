@@ -34,7 +34,7 @@ function render() {
     if (cells.find(cell => cell.alive)) {
       render();
     }
-  }, 100);
+  }, 80);
 }
 
 render();
