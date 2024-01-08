@@ -11,10 +11,9 @@ const generateCell = (x: number, y: number) => Cell.of(x, y, Math.random() >= 0.
 const cells = range(0, rowSize).flatMap(x => range(0, columnSize).map(y => generateCell(x, y)));
 
 const canvas = document.querySelector("canvas") as HTMLCanvasElement;
+canvas.width = 800;
+canvas.height = 800;
 const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
-// canvas.addEventListener("click", (e) => {
-//
-// });
 
 function render() {
   ctx.fillStyle = "white";
