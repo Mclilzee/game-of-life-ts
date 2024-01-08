@@ -19,7 +19,7 @@ let cellElements = cells.map(cell => {
   return element;
 });
 
-const canvas = document.querySelector(".canvas") as HTMLDivElement;
+const canvas = document.querySelector("canvas") as HTMLCanvasElement;
 canvas.style.display = "grid";
 canvas.style.gridTemplateRows = `repeat(${rowSize}, 1fr)`;
 canvas.style.gridTemplateColumns = `repeat(${columnSize}, 1fr)`;
