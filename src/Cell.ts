@@ -14,6 +14,6 @@ export default class Cell {
   }
 
   toString() {
-    return this.x.toString() + this.y.toString();
+    return this.x.toString() + ":" + this.y.toString();
   }
 }

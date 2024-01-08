@@ -18,15 +18,19 @@ function updateCells(cells: Cell[]): void {
 }
 
 function generateNeighboringMap(cells: Cell[]) {
-  const counter = countBy((cords: number[]) => cords[0].toString() + cords[1].toString());
+  const counter = countBy((cords: number[]) => cords[0].toString() + ":" + cords[1].toString());
   const map = counter(cells.flatMap(cell => getNeighbors(cell)));
   return map;
 }
+
 function getNeighbors(cell: Cell) {
-  return [cell.x - 1, cell.x, cell.x + 1].flatMap(x =>
-    [cell.y - 1, cell.y, cell.y + 1]
-      .filter(y => !(cell.x == x && cell.y == y))
-      .map(y => [x, y]));
+  return [cell.x - 1, cell.x, cell.x + 1]
+    .filter(x => x >= 0)
+    .flatMap(x =>
+      [cell.y - 1, cell.y, cell.y + 1]
+        .filter(y => y >= 0)
+        .filter(y => !(cell.x == x && cell.y == y))
+        .map(y => [x, y]));
 }
 
 export default updateCells;

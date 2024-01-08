@@ -6,7 +6,7 @@ import updateCells from "./updateCells";
 const rowSize = 100;
 const columnSize = rowSize;
 
-const generateCell = (x: number, y: number) => Cell.of(x, y, Math.random() >= 0.5 ? true : false);
+const generateCell = (x: number, y: number) => Cell.of(x, y, Math.random() >= 0.3 ? true : false);
 
 const cells = range(0, rowSize).flatMap(x => range(0, columnSize).map(y => generateCell(x, y)));
 
